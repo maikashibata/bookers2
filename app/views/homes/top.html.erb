@@ -1,20 +1,32 @@
-<h1>
-  Welcome to 
-  <i class="fa-solid fa-book"></i>
-  <strong>Bookers</strong>
-  !!
-</h1>
-<p>
-  In
-  <i class="fa-solid fa-book"></i>
-  <strong>Bookers</strong>
-  ,
-</p>
-<p>
-  you can share and exchange your opinions , inpressions , and emotions
-</p>
-<p>
-  about various books!
-</p>
-<%= link_to 'Log in', "/users/sign_in" %>
-<%= link_to 'Sigun up', "/users/sign_in" %>
+<div class="container mx-auto">
+  <h1>
+    welcome to 
+    <i class="fa-solid fa-book"></i>
+    <strong>Bookers</strong>
+    !!
+  </h1>
+  <p>
+    In
+    <i class="fa-solid fa-book"></i>
+    <strong>Bookers</strong>
+    ,
+  </p>
+  <p>
+    you can share and exchange your opinions , inpressions , and emotions
+  </p>
+  <p>
+    about various books!
+  </p>
+  <div class="container mx-auto">
+    <div class="row">
+      <%= link_to "/users/sign_in", class: "btn btn-info" do %>
+        Log in
+      <% end %>
+    </div>
+    <div class="row">
+      <%= link_to "/users/sign_in", class: "btn btn-success" do %>
+        Sigun up
+      <% end %>
+    </div>
+  </div>
+</div>

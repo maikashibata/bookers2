@@ -1,20 +1,43 @@
-<%= render 'list', book: @book, user: @user %>
-
-<h2>Book detail</h2>
-<div>
-  <%= flash[:notice] %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'list', book: @book, user: @user %>
+    </div>
+    
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <div>
+        <%= flash[:notice] %>
+      </div>
+      
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>
+              <span>
+                <%= image_tag @user.get_profile_image %>
+                <%= link_to "#{@user.name}", books_path %>
+              </span>
+            </td>
+            <td>
+              <span><%= link_to "#{@book.title}", book_path(@book.id) %></span>
+            </td>
+            <td><%= @book.opinion %></td>
+            <span>
+              <td>
+                <%= link_to edit_book_path(@book.id), class: 'btn btn-success' do %>
+                  Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' do %>
+                  Destroy
+                <% end %>
+              </td>
+            </span>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<%= image_tag @user.get_profile_image %>
-<span><%= link_to "#{@user.name}", books_path %></span>
-
-<p>
-  <span><%= link_to "#{@book.title}", book_path(@book.id) %></span>
-  <%= @book.opinion %>
-</p>
-<span>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
-  <% end %>
-</span>

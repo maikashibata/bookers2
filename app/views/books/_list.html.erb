@@ -1,25 +1,49 @@
-<h2>User info</h2>
-<%= image_tag user.get_profile_image %>
-<p>name<%= user.name %></p>
-<p>introduction<%= user.introduction %></p>
-<span><%= link_to "Edit", edit_user_path(user.id) %></span>
-
-<h2>New book</h2>
-<% if book.errors.any? %>
-  <%= book.errors.count %> errors prohibited this book from being saved:
-  <ul>
-    <% book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<div class="container">
+  <div class="row">
+    <h2>User info</h2>
+    <%= image_tag user.get_profile_image %>
+    <table class="table table-striped row">
+      <tbody>
+        <tr>
+          <th>
+            name
+          </th>
+          <td>
+            <%= user.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            introduction
+          </th>
+          <td>
+            <%= user.introduction %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "/users/#{user.id}/edit", class: "btn" do %>
+      <i class="fa-solid fa-user-gear"></i>
     <% end %>
-  </ul>
-<% end %>
 
-<%= form_with model: book, url: '/books', method: :post do |f| %>
-  <p>Title</p>
-  <%= f.text_field :title %>
+    <h2>New book</h2>
+    <% if book.errors.any? %>
+      <%= book.errors.count %> errors prohibited this book from being saved:
+      <ul>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-  <p>Opinion</p>
-  <%= f.text_area :opinion %>
+    <%= form_with model: book, url: '/books', method: :post do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title %>
 
-  <%= f.submit 'Create Book' %>
-<% end %>
+      <p>Opinion</p>
+      <%= f.text_area :opinion %>
+
+      <%= f.submit 'Create Book', class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
