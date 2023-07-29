@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+      <%= flash[:notice] %>
       <%= render 'list', book: @book, user: @user %>
     </div>
     
@@ -12,6 +13,7 @@
           <tr>
             <th>image</th>
             <th>name</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +21,7 @@
             <td><%= image_tag user.get_profile_image %></td>
             <td><%= user.name %></td>
             <td>
-              <span><%= link_to "show", "/users/#{user.id}" %></span>
+              <span><%= link_to "show", user_path(user.id) %></span>
             </td>
           </tr>
         </tbody>

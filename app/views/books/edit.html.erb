@@ -10,14 +10,10 @@
   <% end %>
   
   <%= form_with model: @book do |f| %>
-    <p>Title</p>
-    <div class="container-fluid">
-      <%= f.text_field :title %>
-    </div>
-    <p>Opinion</p>
-    <div class="container-fluid">
-      <%= f.text_area :opinion %>
-    </div>
+      <p>Title</p>
+        <%= f.text_field :title %>
+      <p>Opinion</p>
+        <%= f.text_area :opinion %>
     <%= f.submit 'Update Book', class: "btn btn-success" %>
   <% end %>
   <span>

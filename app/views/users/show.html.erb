@@ -12,7 +12,6 @@
           <th></th>
           <th>Title</th>
           <th>Opinion</th>
-          <th></th>
         </thead>
         <tbody>
           <tr>
@@ -23,18 +22,6 @@
               <span><%= link_to book.title, book_path(book.id) %></span>
             </td>
             <td><%= book.opinion %></td>
-            <td>
-              <span>
-                <% if book.user == current_user %>
-                  <%= link_to edit_book_path(book.id), class: 'btn btn-success' do %>
-                    Edit
-                  <% end %>
-                  <%= link_to book_path(book.id), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' do %>
-                    Destroy
-                  <% end %>
-                <% end %>
-              </span>
-            </td>
           </tr>
         </tbody>
       </table>
