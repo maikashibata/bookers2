@@ -2,31 +2,7 @@
   <%= flash[:notice] %>
 </div>
 
-<h2>User info</h2>
-<%= image_tag @user.get_profile_image %>
-<p>name<%= @user.name %></p>
-<p>introduction<%= @user.introduction %></p>
-<span><%= link_to "Edit", edit_user_path(@user.id) %></span>
-
-<h2>New book</h2>
-<% if @book.errors.any? %>
-  <%= @book.errors.count %> errors prohibited this book from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @book, url: '/books', method: :post do |f| %>
-  <p>Title</p>
-  <%= f.text_field :title %>
-
-  <p>Opinion</p>
-  <%= f.text_area :opinion %>
-
-  <%= f.submit 'Create Book' %>
-<% end %>
+<%= render 'list', book: @book, user: @user %>
 
 <h1>Books</h1>
 <% @books.each do |book| %>
@@ -44,7 +20,9 @@
       <td>
         <span>
           <%= link_to "Edit", edit_book_path(book.id) %>
-          <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+          <% if @book.user == current_user %>
+            <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+          <% end %>
         </span>
       </td>
     </tr>

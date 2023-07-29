@@ -1,13 +1,27 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-</div>
+<%= render 'list', book: @book, user: @user %>
 
-<% @books.each do |book| %>
-<div>
-  <%= link_to book_path(book.id) do %>
-    <%= image_tag book.get_image %>
-  <% end %>
-  <p>ユーザーネーム：<%= book.user.name %></p>
-</div>
+<h1>Books</h1>
+<% @users.each do |user| %>
+<table>
+  <thead>
+    <th>Title</th>
+    <th>Opinion</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span><%= link_to "#{book.title}", book_path(book.id) %></span>
+      </td>
+      <td><%= book.opinion %></td>
+      <td>
+        <span>
+          <%= link_to "Edit", edit_book_path(book.id) %>
+          <% if @user.user == current_user %>
+            <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+          <% end %>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <% end %>
