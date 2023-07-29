@@ -1,16 +1,16 @@
+<h2>Book detail</h2>
 <div>
   <%= flash[:notice] %>
 </div>
 
+<%= image_tag @user.get_profile_image %>
+<span><%= link_to "#{@user.name}", books_path %></span>
+
 <p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= @book.body %>
+  <span><%= link_to "#{@book.title}", book_path(@book.id) %></span>
+  <%= @book.opinion %>
 </p>
 <span>
   <%= link_to "Edit", edit_book_path(@book.id) %>
-  <%= link_to "Back", "/books" %>
+  <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
 </span>

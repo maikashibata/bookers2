@@ -22,8 +22,8 @@
   <p>Title</p>
   <%= f.text_field :title %>
 
-  <p>Body</p>
-  <%= f.text_area :body %>
+  <p>Opinion</p>
+  <%= f.text_area :opinion %>
 
   <%= f.submit 'Create Book' %>
 <% end %>
@@ -33,16 +33,19 @@
 <table>
   <thead>
     <th>Title</th>
-    <th>Body</th>
+    <th>Opinion</th>
   </thead>
   <tbody>
     <tr>
-      <td><%= book.title %></td>
-      <td><%= book.body %></td>
       <td>
-        <span><%= link_to "show", book_path(book.id) %></span>
-        <span><%= link_to "Edit", book_path(book.id) %></span>
-        <span><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></span>
+        <span><%= link_to "#{book.title}", book_path(book.id) %></span>
+      </td>
+      <td><%= book.opinion %></td>
+      <td>
+        <span>
+          <%= link_to "Edit", edit_book_path(book.id) %>
+          <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+        </span>
       </td>
     </tr>
   </tbody>
