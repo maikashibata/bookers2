@@ -25,7 +25,7 @@
             <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to user_path(current_user), class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-house" style="color: #ffffff;"></i> Home
+                  <i class="fas fa-home" style="color: #ffffff;"></i> Home
                 <% end %>
               </li>
               <li class="nav-item">
@@ -46,12 +46,12 @@
             <% else %>
               <li class="nav-item">
                 <%= link_to root_path, class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-house" style="color: #ffffff;"></i> Home
+                  <i class="fas fa-home" style="color: #ffffff;"></i> Home
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to about_path, class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-exclamation" style="color: #ffffff;"></i> About
+                  <i class="fas fa-link" style="color: #ffffff;"></i> About
                 <% end %>
               </li>
               <li class="nav-item">
@@ -61,7 +61,7 @@
               </li>
               <li class="nav-item">
                 <%= link_to new_user_session_path, class: 'nav-link text-white' do %>
-                  <i class="fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Log in
+                  <i class="fas fa-sign-in-alt" style="color: #ffffff;"></i> Log in
                 <% end %>
               </li>
             <% end %>
